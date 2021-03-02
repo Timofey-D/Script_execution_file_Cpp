@@ -4,9 +4,10 @@ The script is based on compilator g++ and version C++ 17.
 
 if you work a lot of time in command line, then this script is comfortable.
 Script contains several commands:
-1) run filename -e ==> to compile source_file and to execute right now;
-2) run filename -p ==> to compile source_file and print an execution file name;
-3) run filename -n ==> to compile source_code and to create another execution file without removing previous execution file.
+1) run filename.cpp -e ==> to compile a source_file and to execute right now;
+2) run filename.cpp -p ==> to compile a source_file and print an execution file name;
+3) run filename.cpp -n ==> to compile a source_code and to create another execution file without removing previous execution file.
+4) run filename.cpp -d ==> to compile a source_code and to delete an execution file at once after executing.
 
 All these command flags can be used together.
 
