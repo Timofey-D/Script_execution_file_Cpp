@@ -5,29 +5,14 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdio>
+#include "run.h"
+
 
 #define MAX_SYM 16
 #define MAX_LENGTH_FILE_NAME 255
 #define COMMAND_LENGTH 255
 
 const char * commands = "epnd\0";
-
-// To create another execution file without removing previous file
-void getAnotherFilename(char * source_code, char * execution_file);
-// To compile a source code
-void compilation(const char * source_file, const char * execution_file);
-// To create an execution filename
-void getFileName(const char * line, char * execution_file, bool include_extension);
-// To create a char array that contains flags of commands
-void getFlags(const char * line, char * flags);
-// To check the flags
-bool checkFlags(const char * flags);
-// To execute the script
-void executionScript(const char * flags, char * source_code, char * execution_file);
-// To check whether there is a rename command
-bool renameCommand(const char * flags);
-//
-void modeExecution();
 
 
 int main(int argc, const char * argv[])
@@ -167,9 +152,10 @@ void executionScript(const char * flags, char * source_code, char * execution_fi
 				{
 					std::system(command_exe);
 				}
-				strcpy(delete_command, "rm -Rv ");
+				strcpy(delete_command, "rm -R ");
 				strcat(delete_command, execution_file);
 				std::system(delete_command);
+                                std::cerr << "Removed file: " << execution_file << std::endl;
 				executed = 1;
 				execution_file_was_deleted = 1;
 				break;
