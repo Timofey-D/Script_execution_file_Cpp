@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <cstdio>
 #include "run.h"
-
+#include <cstring>
 
 #define MAX_SYM 16
 #define MAX_LENGTH_FILE_NAME 255
