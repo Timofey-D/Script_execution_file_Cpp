@@ -1,5 +1,5 @@
 # Script_execution_file_Cpp
-The script was wrote for comfortable work with file C++.
+The script was wrote for comfortable work with C++ files.
 The script is based on compilator g++ and version C++ 17.
 
 if you work a lot of time in command line, then this script is comfortable.
