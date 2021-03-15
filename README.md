@@ -1,4 +1,4 @@
-# Script_execution_file_Cpp
+# Run script for C++
 The script was wrote for comfortable work with C++ files.
 The script is based on compilator g++ and version C++ 17.
 
