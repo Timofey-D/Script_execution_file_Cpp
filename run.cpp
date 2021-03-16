@@ -12,7 +12,7 @@
 #define MAX_LENGTH_FILE_NAME 255
 #define COMMAND_LENGTH 255
 
-const char * commands = "epnd\0";
+const char * commands = "epndw\0";
 
 
 int main(int argc, const char * argv[])
@@ -25,7 +25,8 @@ int main(int argc, const char * argv[])
 	 * run filename -p => to print a name of execution file
 	 * run filename -n => to create new execution file without removing previous execution file 
 	 * run filename -d => to compile a file and execute it and delete after execution
-	*/
+         * run filename -w => to compile a file without extension ".exe".
+        */
 	
 	// To check whether there are some flags
  	bool thereAreFlags = argc == 3 && argv[2][0] == '-'; 
@@ -86,16 +87,33 @@ int main(int argc, const char * argv[])
 			return 1;
 		}
 
+		// To append symbol '\0', that to read char array intill to it.
 		*(argv + 1) += '\0';
-		// To append symbol '\0', that to read char array intill to it.		
+
 		if (renameCommand(flags) == 1)
 		{
-			getAnotherFilename(source_code, execution_file);
-		}
+                        if (withoutCommand(flags))
+                        {
+                                getAnotherFilename(source_code, execution_file);
+                                getFileName(source_code, execution_file, 0);
+                        }
+                        else
+                        {
+                                getAnotherFilename(source_code, execution_file);
+                                getFileName(source_code, execution_file, 1);
+                        }       
+                }
 		else
 		{
-			getFileName(source_code, execution_file, 1);
-		}
+                        if (withoutCommand(flags))
+                        {
+			        getFileName(source_code, execution_file, 0);
+		        }      
+                        else
+                        {
+			        getFileName(source_code, execution_file, 1);
+                        }
+                }
 
 		executionScript(flags, source_code, execution_file);
 
@@ -159,6 +177,11 @@ void executionScript(const char * flags, char * source_code, char * execution_fi
 				executed = 1;
 				execution_file_was_deleted = 1;
 				break;
+                        case 'w':
+				strcpy(command_exe, "./");
+				strcat(command_exe, execution_file);
+                                break;
+
 		}
 		if (executed == 1 && execution_file_was_deleted == 1)
 		{
@@ -280,6 +303,18 @@ void getAnotherFilename(char * source_code, char * execution_file)
 		strcat(filename, ".exe");
 	}
 	while (std::fstream(filename));
-	getFileName(filename, execution_file, 1);
+	strcpy(execution_file, filename);
 	delete[] filename;
-}	
+}
+
+bool withoutCommand(const char * flags)
+{
+    for (int i = 0; flags[i] != '\0'; i++)
+    {
+        if (flags[i] == 'w')
+        {
+            return 1;
+        }
+    }
+    return 0;
+}

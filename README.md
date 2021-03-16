@@ -8,7 +8,7 @@ Script contains several commands:
 2) run filename.cpp -p ==> to compile a source_file and print an execution file name;
 3) run filename.cpp -n ==> to compile a source_code and to create another execution file without removing previous execution file.
 4) run filename.cpp -d ==> to compile a source_code and to delete an execution file at once after executing.
-
+5) run filename.cpp -w ==> to compile a source code to execution file without extenstion.
 All these command flags can be used together.
 
 In order to run this script on your computer, you have to put it in root directory.

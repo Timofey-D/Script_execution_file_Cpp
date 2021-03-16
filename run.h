@@ -24,4 +24,7 @@ bool renameCommand(const char * flags);
 //
 void modeExecution();
 
+// To check whether there is a flag for creating execution file without extension
+bool withoutCommand(const char * flags);  
+
 #endif // Script_run
