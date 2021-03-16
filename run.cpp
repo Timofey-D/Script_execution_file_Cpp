@@ -92,7 +92,7 @@ int main(int argc, const char * argv[])
 
 		if (renameCommand(flags) == 1)
 		{
-                        if (withoutCommand(flags))
+                        if (withoutCommand(flags) == 1)
                         {
                                 getAnotherFilename(source_code, execution_file);
                                 getFileName(source_code, execution_file, 0);
@@ -105,7 +105,7 @@ int main(int argc, const char * argv[])
                 }
 		else
 		{
-                        if (withoutCommand(flags))
+                        if (withoutCommand(flags) == 1)
                         {
 			        getFileName(source_code, execution_file, 0);
 		        }      
@@ -147,9 +147,6 @@ void executionScript(const char * flags, char * source_code, char * execution_fi
 	{
 		switch (flags[pos])
 		{
-			case 'n':
-				compilation(source_code, execution_file);
-				break;
 			case 'p':
 				std::cout << execution_file << std::endl;
 				break;
@@ -300,12 +297,34 @@ void getAnotherFilename(char * source_code, char * execution_file)
 		getFileName(source_code, filename, 0);
 		strcat(filename, "_");
 	       	strcat(filename, std::to_string(ID++).c_str());
-		strcat(filename, ".exe");
-	}
-	while (std::fstream(filename));
+        } while (existingFile(filename));
 	strcpy(execution_file, filename);
 	delete[] filename;
 }
+
+
+bool existingFile(const char * filename)
+{
+        char * checking_ = new char[MAX_LENGTH_FILE_NAME];
+        char * checking_w = new char[MAX_LENGTH_FILE_NAME];
+        strcpy(checking_, filename);
+        strcat(checking_, ".exe");
+        strcpy(checking_w, filename);
+        std::ifstream check_file;
+        std::ifstream check_w_file;
+        check_file.open(checking_);
+        check_w_file.open(checking_w);
+        if (check_file || check_w_file)
+        {
+            delete[] checking_;
+            delete[] checking_w;
+            return 1;
+        }
+        delete[] checking_;
+        delete[] checking_w;
+        return 0;
+}
+
 
 bool withoutCommand(const char * flags)
 {

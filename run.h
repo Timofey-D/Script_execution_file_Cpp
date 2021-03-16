@@ -27,4 +27,6 @@ void modeExecution();
 // To check whether there is a flag for creating execution file without extension
 bool withoutCommand(const char * flags);  
 
+bool existingFile(const char * filename);
+
 #endif // Script_run
