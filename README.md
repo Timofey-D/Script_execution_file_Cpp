@@ -13,7 +13,7 @@ All these command flags can be used together.
 
 In order to run this script on your computer, you have to put it in root directory.
 You have to do the following action:
-1) echo $PATH = usr/local/bin (for example)
+1) echo $PATH (for example /url/local/bin)
 2) cd /usr/local/bin
 3) git clone https://github.com/Timofey-D/run_script.git
 4) cd /usr/local/bin/run_script
