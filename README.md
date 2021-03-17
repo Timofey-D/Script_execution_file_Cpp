@@ -14,10 +14,11 @@ All these command flags can be used together.
 In order to run this script on your computer, you have to put it in root directory.
 You have to do the following action:
 1) echo $PATH = usr/local/bin (for example)
-2) git clone https://github.com/Timofey-D/run_script.git >> /usr/local/bin
-3) cd /usr/local/bin/run_script
-4) ./install.sh
-5) cd ../
+2) cd /usr/local/bin
+3) git clone https://github.com/Timofey-D/run_script.git
+4) cd /usr/local/bin/run_script
+5) ./install.sh
+6) cd ../
 
 A message will be printed about succesful finished installing. 
 
