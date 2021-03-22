@@ -17,7 +17,7 @@ You have to do the following action:
 2) cd /usr/local/bin
 3) git clone https://github.com/Timofey-D/run_script.git
 4) cd /usr/local/bin/run_script
-5) ./install.sh
+5) ./install.sh (if it happens some error, you can add "sudo" before command)
 6) cd ../
 
 A message will be printed about succesful finished installing. 
