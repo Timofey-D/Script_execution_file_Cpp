@@ -1,6 +1,6 @@
 #include <iostream>
 #include "preProcessor.h"
-#include <string>
+#include <cstring>
 #include <fstream>
 #include <algorithm>
 #define SIZE_OF_FLAGS 5

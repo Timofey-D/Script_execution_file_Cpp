@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include "postProcessor.h"
 #define SIZE_OF_COMMAND 24
 

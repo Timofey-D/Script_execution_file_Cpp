@@ -2,8 +2,8 @@
 #define input_h
 #define SIZE_OF_NAME 64
 #define SIZE_OF_FLAGS 16
-#include <string>
-
+#include <cstring>
+#include <cstdint>
 
 class Input
 {
