@@ -11,6 +11,16 @@ Script contains several commands:
 5) run filename.cpp -w ==> to compile a source code to execution file without extenstion.
 All these command flags can be used together.
 
+The script allows to choose certain command g++:
+There are following commands:
+1) -0 (g++ source -o execution)
+2) -1 (g++ -Wall source -o execution)
+3) -2 (g++ -Wall -pedantic source -o execution)
+4) -3 (g++ -Wall -pedantic -std=c++17 source -o execution)
+
+There is necessary to check that you have a cmake via terminal using the following command:
+cmake --version (The version must be at least 3.10)
+
 In order to run this script on your computer, you have to put it in root directory.
 You have to do the following action:
 1) echo $PATH (for example /url/local/bin)

@@ -1,4 +1,4 @@
-rm -v CMakeCache.txt
+rm -dv CMake* cmake*
 clear
 cmake ..
 cmake --build . -config runcpp
