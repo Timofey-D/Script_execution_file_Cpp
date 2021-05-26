@@ -1,5 +1,5 @@
-rm -dv CMake* cmake*
+sudo rm -dv CMake* cmake*
 clear
 cmake ..
-cmake --build . -config runcpp
+sudo cmake --build . --config
 sudo mv runcpp ../../

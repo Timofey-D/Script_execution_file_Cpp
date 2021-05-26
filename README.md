@@ -28,7 +28,7 @@ You have to do the following action:
 3) git clone https://github.com/Timofey-D/run_script.git
 4) cd run_script
 5) ./install_script.sh (if it happens some error, you can add "sudo" before command)
-6) it must appear execution file on the current directory, which called "runcpp"
+6) it must appear an execution file on the current directory, which called "runcpp"
 7) mv runcpp /usr/local/bin
 
 A message will be printed about succesful finished installing. 
