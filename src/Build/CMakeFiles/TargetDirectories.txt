@@ -1,0 +1,3 @@
+/usr/local/bin/Run_script/src/Build/CMakeFiles/rebuild_cache.dir
+/usr/local/bin/Run_script/src/Build/CMakeFiles/edit_cache.dir
+/usr/local/bin/Run_script/src/Build/CMakeFiles/runcpp.dir
