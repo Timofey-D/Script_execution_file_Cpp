@@ -17,7 +17,7 @@ Input::Input(const char * input[], int length)
 
     for (int i = 1; i < length; i++)
     {
-        std::regex file_regex("[0-9a-zA-Z]*\\.cpp");
+        std::regex file_regex("[0-9a-zA-Z]*\\.(cpp|c)");
         std::regex compile_flags("-[0 | 1 | 2 | 3]?");
         std::regex command_flags("-[d | e | n | p | w]*");
         if (std::regex_match(input[i], file_regex))
