@@ -8,12 +8,15 @@
 
 int main(int argc, const char * argv[])
 {
+    // To add a the end of each char pointers specified character, which points to the end of string
     for (int i = 1; i < argc; i++)
     {
         argv[i] += '\0';
     }
     
+    // To create a variable, which will get right input
     Input right_input;
+
     try
     {
         Input input(argv, argc);
