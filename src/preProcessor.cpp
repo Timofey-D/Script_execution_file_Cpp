@@ -4,37 +4,45 @@
 #include <fstream>
 #include <algorithm>
 #define SIZE_OF_FLAGS 5
-#define SIZE_OF_NAME 64
 
 
 PreProcessor::PreProcessor(const char * source_code, const char * flags)
 {
-    this->execution_file = new char[SIZE_OF_NAME];
-    getFilename(source_code, this->execution_file);
-    
+    int filename_length = static_cast<int>(FilenameLength(source_code, '.'));
+    this->execution_file = new char[filename_length + 1];
+    this->execution_file[filename_length] = '\0';
+    getFilename(source_code, this->execution_file, filename_length);
+        
     if (flags != 0)
     {
-        executionFlags(flags);
+        this->createExeFile(thereIsChar(flags, 'n'), thereIsChar(flags, 'w'), filename_length);
+
+        if (thereIsChar(flags, 'p'))
+        {
+            std::cout << this->execution_file << std::endl;
+        }
     }
 }
 
 
-void PreProcessor::getFilename(const char * source_code, char * target_file)
+void PreProcessor::getFilename(const char * source_code, char * target_file, int name_length)
 {
-    char * filename = new char[SIZE_OF_NAME];
-    for (int i = 0; source_code[i] != '.'; i++)
+    for (int i = 0; i < name_length; i++)
     {
-        filename[i] = source_code[i];
+        target_file[i] = source_code[i];
     }
-    strcpy(target_file, filename);
-    delete[] filename;
 }
 
 
-void PreProcessor::createExeFile(const bool & new_file, const bool & extension)
+void PreProcessor::createExeFile(const bool & new_file, const bool & extension, int name_length)
 {
     int ID = 1;
-    char * temp_filename = new char[SIZE_OF_NAME];
+    if (!extension)
+    {
+        name_length += 4;
+    }
+    char * temp_filename = new char[name_length + 1];
+    temp_filename[name_length] = '\0';
     strcpy(temp_filename, this->execution_file);
 
     // if extension equalls 0, then it needs to add extension
@@ -42,12 +50,13 @@ void PreProcessor::createExeFile(const bool & new_file, const bool & extension)
     {
         strcat(temp_filename, ".exe\0"); 
     }
+    std::cout << this->execution_file << std::endl;
 
     // if this statement equalls 0 and 0, then 
     if (!checkFileExe(temp_filename) || !new_file)
     {
         delete[] this->execution_file;
-        this->execution_file = new char[SIZE_OF_NAME];
+        this->execution_file = new char[name_length];
         strcpy(this->execution_file, temp_filename);
         delete[] temp_filename;
         return;
@@ -57,21 +66,53 @@ void PreProcessor::createExeFile(const bool & new_file, const bool & extension)
     {
         delete[] temp_filename;
 
-        temp_filename = new char[SIZE_OF_NAME];
+        char * temp_filename = new char[name_length + 1];
+        temp_filename[name_length] = '\0';
         strcpy(temp_filename, this->execution_file);
-        strcat(temp_filename, "_");
+        strcat(temp_filename, "_\0");
         strcat(temp_filename, std::to_string(ID++).c_str());
 
         if (!extension)
         {
-            strcat(temp_filename, ".exe"); 
+            strcat(temp_filename, ".exe\0"); 
         }
     } while(checkFileExe(temp_filename) || !new_file);
     
     delete[] this->execution_file;
     
-    this->execution_file = new char[SIZE_OF_NAME];
+    this->execution_file = new char[name_length + 1];
+    this->execution_file[name_length] = '\0';
     strcpy(this->execution_file, temp_filename);
 
     delete[] temp_filename;
+}
+
+
+bool PreProcessor::checkFileExe(const char * filename)
+{
+    std::fstream file(filename);
+    return file.good();
+}
+
+
+bool PreProcessor::thereIsChar(const char * source, const char symbol)
+{
+   for (int i = 0; source[i] != '\0'; i++)
+   {
+       if (source[i] == symbol)
+       {
+           return 1;
+       }
+   }
+   return 0;
+}
+
+size_t PreProcessor::FilenameLength(const char * source_file, char symbol)
+{
+    size_t length = 0;
+    for (; source_file[length] != '.'; length++)
+    {
+        length++;
+    }
+    return length;
 }
