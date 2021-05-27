@@ -12,10 +12,12 @@ add_executable(
     preProcessor.cpp
     compilation.cpp
     postProcessor.cpp
+    utility.cpp
     main.h
     input.h
     preProcessor.h
     compilation.h
     postProcessor.h
+    utility.h
     )
 

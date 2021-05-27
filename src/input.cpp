@@ -1,4 +1,5 @@
 #include "input.h"
+#include "utility.h"
 #include <exception>
 #include <fstream>
 #include <regex>
@@ -24,7 +25,9 @@ Input::Input(const char * input[], int length)
         { 
             right_file = !checkSourceCode(input[i]);
             file_was_found = 1;
-            this->source_code = new char[SIZE_OF_NAME];
+            int file_length = static_cast<int>(Utility::length(input[i]));
+            this->source_code = new char[file_length + 1];
+            this->source_code[file_length] = '\0';
             strcpy(this->source_code, input[i]);
         }
         else if (std::regex_match(input[i], compile_flags) || std::regex_match(input[i], command_flags))
@@ -43,7 +46,9 @@ Input::Input(const char * input[], int length)
                 {
                     throw std::invalid_argument("It was obtained more one flag!");
                 }
-                this->file_flags = new char[SIZE_OF_FLAGS];
+                int flags_length = static_cast<int>(Utility::length(input[i]));
+                this->file_flags = new char[flags_length + 1];
+                this->file_flags[flags_length] = '\0';
                 strcpy(this->file_flags, input[i]);
             }
         }
@@ -72,7 +77,7 @@ Input::Input(const char * input[], int length)
     }
     if (this->file_flags == nullptr)
     {
-        this->file_flags = new char[SIZE_OF_FLAGS];
+        this->file_flags = new char[2];
         strcpy(this->file_flags, "0\0");
     }
 }

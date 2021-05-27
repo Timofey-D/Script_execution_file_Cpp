@@ -37,6 +37,8 @@ int main(int argc, const char * argv[])
     Compilation compiler(source, execution, coflag);
 
     PostProcessor running(execution, flags); 
+
+    std::cout << execution << std::endl;
     return 0;
 }
 

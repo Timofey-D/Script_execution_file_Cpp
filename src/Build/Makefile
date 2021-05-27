@@ -249,6 +249,30 @@ preProcessor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/runcpp.dir/build.make CMakeFiles/runcpp.dir/preProcessor.cpp.s
 .PHONY : preProcessor.cpp.s
 
+utility.o: utility.cpp.o
+.PHONY : utility.o
+
+# target to build an object file
+utility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runcpp.dir/build.make CMakeFiles/runcpp.dir/utility.cpp.o
+.PHONY : utility.cpp.o
+
+utility.i: utility.cpp.i
+.PHONY : utility.i
+
+# target to preprocess a source file
+utility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runcpp.dir/build.make CMakeFiles/runcpp.dir/utility.cpp.i
+.PHONY : utility.cpp.i
+
+utility.s: utility.cpp.s
+.PHONY : utility.s
+
+# target to generate assembly for a file
+utility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/runcpp.dir/build.make CMakeFiles/runcpp.dir/utility.cpp.s
+.PHONY : utility.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -273,6 +297,9 @@ help:
 	@echo "... preProcessor.o"
 	@echo "... preProcessor.i"
 	@echo "... preProcessor.s"
+	@echo "... utility.o"
+	@echo "... utility.i"
+	@echo "... utility.s"
 .PHONY : help
 
 

@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/runcpp.dir/postProcessor.cpp.o.d"
   "CMakeFiles/runcpp.dir/preProcessor.cpp.o"
   "CMakeFiles/runcpp.dir/preProcessor.cpp.o.d"
+  "CMakeFiles/runcpp.dir/utility.cpp.o"
+  "CMakeFiles/runcpp.dir/utility.cpp.o.d"
   "runcpp"
   "runcpp.pdb"
 )
