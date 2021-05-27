@@ -15,6 +15,14 @@ class PreProcessor
         {
             return this->execution_file;
         }
+        void setExecutionFile(const char * filename)
+        {
+            delete[] this->execution_file;
+            int length = static_cast<int>(Utility::length(filename));
+            this->execution_file = new char[length + 1];
+            this->execution_file[length] = '\0';
+            strcpy(this->execution_file, filename);
+        }
     private:
        char * execution_file = nullptr;
 

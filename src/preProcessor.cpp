@@ -16,9 +16,9 @@ PreProcessor::PreProcessor(const char * source_code, const char * flags)
         
     if (flags != 0)
     {
-        this->createExeFile(thereIsChar(flags, 'n'), thereIsChar(flags, 'w'), filename_length);
+        this->createExeFile(Utility::thereIsChar(flags, 'n'), Utility::thereIsChar(flags, 'w'), filename_length);
 
-        if (thereIsChar(flags, 'p'))
+        if (Utility::thereIsChar(flags, 'p'))
         {
             std::cout << this->execution_file << std::endl;
         }
@@ -55,9 +55,7 @@ void PreProcessor::createExeFile(const bool & new_file, const bool & extension, 
     // if this statement equalls 0 and 0, then 
     if (!checkFileExe(temp_filename) || !new_file)
     {
-        delete[] this->execution_file;
-        this->execution_file = new char[name_length];
-        strcpy(this->execution_file, temp_filename);
+        this->setExecutionFile(temp_filename);
         delete[] temp_filename;
         return;
     }
@@ -78,11 +76,7 @@ void PreProcessor::createExeFile(const bool & new_file, const bool & extension, 
         }
     } while(checkFileExe(temp_filename) || !new_file);
     
-    delete[] this->execution_file;
-    
-    this->execution_file = new char[name_length + 1];
-    this->execution_file[name_length] = '\0';
-    strcpy(this->execution_file, temp_filename);
+    this->setExecutionFile(temp_filename);
 
     delete[] temp_filename;
 }
@@ -107,12 +101,3 @@ bool PreProcessor::thereIsChar(const char * source, const char symbol)
    return 0;
 }
 
-size_t PreProcessor::FilenameLength(const char * source_file, char symbol)
-{
-    size_t length = 0;
-    for (; source_file[length] != symbol; length++)
-    {
-        length++;
-    }
-    return length;
-}
