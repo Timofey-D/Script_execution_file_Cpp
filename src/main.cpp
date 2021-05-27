@@ -38,7 +38,6 @@ int main(int argc, const char * argv[])
 
     PostProcessor running(execution, flags); 
 
-    std::cout << execution << std::endl;
     return 0;
 }
 

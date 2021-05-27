@@ -10,11 +10,9 @@
 PreProcessor::PreProcessor(const char * source_code, const char * flags)
 {
     int filename_length = static_cast<int>(Utility::filenameLength(source_code, '.'));
-    std::cout << filename_length << std::endl;
     this->execution_file = new char[filename_length + 1];
     getFilename(source_code, this->execution_file, filename_length);
     this->execution_file[filename_length] = '\0';
-    std::cout << this->execution_file << std::endl;
         
     if (flags != 0)
     {
