@@ -1,6 +1,7 @@
 #ifndef preProcessor_h
 #define preProcessor_h
 #include <fstream>
+#include <cstring>
 
 class PreProcessor
 {
