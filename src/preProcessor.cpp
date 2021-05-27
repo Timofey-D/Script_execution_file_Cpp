@@ -50,7 +50,6 @@ void PreProcessor::createExeFile(const bool & new_file, const bool & extension, 
     {
         strcat(temp_filename, ".exe\0"); 
     }
-    std::cout << this->execution_file << std::endl;
 
     // if this statement equalls 0 and 0, then 
     if (!checkFileExe(temp_filename) || !new_file)
@@ -110,7 +109,7 @@ bool PreProcessor::thereIsChar(const char * source, const char symbol)
 size_t PreProcessor::FilenameLength(const char * source_file, char symbol)
 {
     size_t length = 0;
-    for (; source_file[length] != '.'; length++)
+    for (; source_file[length] != symbol; length++)
     {
         length++;
     }
